@@ -125,8 +125,7 @@ void draw() {
       if(left){
         image(groundhogLeft, hogX, hogY);
       }
-         left=false; 
-         
+          
          
                
       if(downPressed){
@@ -142,12 +141,13 @@ void draw() {
           downPressed=false;
         }
       
-                  
+            
      if(leftPressed){
          hogX -= hogSpeed;
          image(groundhogLeft, hogX, hogY);
          idle=false;
-        
+         right=false;
+         rightPressed=false;
      }    
         if(hogX <= 0){ 
          leftPressed=false;
@@ -165,6 +165,8 @@ void draw() {
          hogX += hogSpeed;
          image(groundhogRight, hogX, hogY);
          idle=false;
+         left=false;
+         leftPressed=false;
      }
           if(hogX + imgSize > width) {
            hogX = width - imgSize;
@@ -178,7 +180,7 @@ void draw() {
            rightPressed=false; 
          }
      
-        
+             
      //hog and soldier
      if((hogX+imgSize)>(soldierX+=4)&&(hogX)<((soldierX+=4)+imgSize)
      &&(hogY)<(soldierY+imgSize)&&(hogY+imgSize)>(soldierY)){
@@ -186,6 +188,7 @@ void draw() {
        hogY=soilSize;
        leftPressed=false;
        rightPressed=false;
+       downPressed=false;
        lifes--;
        if(lifes==0){
        gameState = GAME_OVER;
@@ -227,6 +230,7 @@ void draw() {
 
 
 void keyPressed(){
+  if (key==CODED) {
   switch(keyCode){
     case DOWN:
     downPressed = true;
@@ -238,4 +242,5 @@ void keyPressed(){
     leftPressed = true;
     break;
   }
+ }
 }
