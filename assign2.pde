@@ -54,7 +54,7 @@ void setup() {
   hogY = soilSize;
   lifes = 2;
 }
-
+ 
 void draw() {
 	// Switch Game State
   switch(gameState){
